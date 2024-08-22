@@ -1,0 +1,73 @@
+version: '3.8'
+
+services:
+  database:
+    build: ./database
+    container_name: mysql_database
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: catalogo
+    ports:
+      - "3306:3306"
+    networks:
+      - app-network
+
+  backend:
+    build: ./backend
+    container_name: python_backend
+    environment:
+      DB_HOST: mysql_database
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_NAME: catalogo
+    depends_on:
+      - database
+    ports:
+      - "5000:5000"
+    networks:
+      - app-network
+
+  frontend:
+    build: ./frontend
+    container_name: simple_frontend
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+      
+  #react
+  #frontend:
+  #  build: ./frontend
+  #  container_name: react_frontend
+  #  ports:
+  #    - "8080:80"
+  #  networks:
+  #    - app-network
+
+  #tailwind
+  #frontend:
+  #  build: ./frontend
+  #  container_name: frontend_app
+  #  ports:
+  #    - "3000:80"
+  #  depends_on:
+  #    - backend
+  #  networks:
+  #    - app-network
+  
+  #nginx:
+  #  image: nginx:latest
+  #  container_name: nginx_proxy
+  #  ports:
+  #    - "80:80"
+  #  volumes:
+  #    - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+  #  depends_on:
+  #    - frontend
+  #    - backend
+  #  networks:
+  #    - app-network
+
+networks:
+  app-network:
+    driver: bridge
