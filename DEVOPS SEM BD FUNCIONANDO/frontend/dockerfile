@@ -1,0 +1,8 @@
+# Use the official Nginx image.
+FROM nginx:alpine
+
+# Copy the frontend code to the Nginx HTML directory.
+COPY . /usr/share/nginx/html
+
+# Expose the port Nginx runs on.
+EXPOSE 80

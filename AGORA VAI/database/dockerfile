@@ -1,0 +1,12 @@
+# Imagem base MySQL
+FROM mysql:8
+
+# Copia o script de inicialização do banco de dados
+COPY init.sql /docker-entrypoint-initdb.d/
+
+# Define a senha do root e o nome do banco de dados
+ENV MYSQL_ROOT_PASSWORD=root
+ENV MYSQL_DATABASE=catalogo
+
+# Expõe a porta do MySQL
+EXPOSE 3306
