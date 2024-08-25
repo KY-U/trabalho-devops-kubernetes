@@ -4,6 +4,12 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from mysql.connector import pooling
 
+#Códigos de status HTTP
+#200 (OK)
+#201 (Created)
+#400 (Bad Request)
+#500 (Internal Server Error)
+
 app = Flask(__name__)
 CORS(app)
 
@@ -14,7 +20,7 @@ db_config = {
     'database': os.getenv('DB_NAME', 'catalogo')
 }
 
-#pool de conexões para reutilizar conexões
+#Pool de conexões para reutilizar conexões
 connection_pool = pooling.MySQLConnectionPool(pool_name="mypool", pool_size=5, **db_config)
 
 def get_db_connection():
@@ -55,9 +61,11 @@ def add_movie():
     if not title or not release_year or not description:
         return jsonify({"error": "All fields (title, release_year, description) are required"}), 400
 
+    #Conecta no bd
     conn = get_db_connection()
     if conn is None:
         return jsonify({"error": "Failed to connect to database"}), 500
+    #Cursor com Contex Manager
     try:
         with conn.cursor() as cursor:
             query = "INSERT INTO movies (title, release_year, description) VALUES (%s, %s, %s)"
@@ -73,9 +81,11 @@ def add_movie():
 
 @app.route('/movies/<int:movie_id>', methods=['DELETE'])
 def delete_movie(movie_id):
+    #Conecta no bd
     conn = get_db_connection()
     if conn is None:
         return jsonify({"error": "Failed to connect to database"}), 500
+    #Cursor com Contex Manager
     try:
         with conn.cursor() as cursor:
             query = "DELETE FROM movies WHERE id = %s"

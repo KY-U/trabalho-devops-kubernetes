@@ -2,7 +2,7 @@
 
 //Com o proxy reverso:
 const apiUrl = '/api';
-// Function to fetch and display movies
+//Busca os filmes
 async function fetchMovies() {
     try {
         const response = await fetch(`${apiUrl}/movies`);
@@ -31,7 +31,7 @@ async function fetchMovies() {
     }
 }
 
-// Function to add a new movie
+//Adiciona filme novo
 document.querySelector('#add-movie-form').addEventListener('submit', async event => {
     event.preventDefault();
 
@@ -60,24 +60,24 @@ document.querySelector('#add-movie-form').addEventListener('submit', async event
         console.log('Movie added:', result);
 
         //alert('Movie added successfully!');
-        fetchMovies(); // Refresh the movie list
+        fetchMovies(); //Atualiza Lista de Filmes
     } catch (error) {
         console.error('Error adding movie:', error);
         alert('Failed to add movie. Please try again.');
     }
 });
 
-// Function to delete a movie
+//Deletar Filme
 async function deleteMovie(id) {
     try {
         await fetch(`${apiUrl}/movies/${id}`, {
             method: 'DELETE'
         });
-        fetchMovies(); // Refresh the movie list
+        fetchMovies(); //Atualizar Filme
     } catch (error) {
         console.error('Error deleting movie:', error);
     }
 }
 
-// Initial fetch
+//Busca filmes já existentes ao carregar a página
 fetchMovies();
