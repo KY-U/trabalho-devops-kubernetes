@@ -1,9 +1,13 @@
-const apiUrl = 'http://localhost:5000'; // URL do backend
+const apiUrl = 'http://python_backend:5000'; // URL do backend
 
 // Function to fetch and display movies
 async function fetchMovies() {
     try {
         const response = await fetch(`${apiUrl}/movies`);
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || 'An error occurred while fetching movies');
+        }
         const movies = await response.json();
         const tableBody = document.querySelector('#movies-table tbody');
         tableBody.innerHTML = '';
@@ -20,6 +24,7 @@ async function fetchMovies() {
             tableBody.appendChild(row);
         });
     } catch (error) {
+        alert(`Error: ${error.message}`);
         console.error('Error fetching movies:', error);
     }
 }
@@ -52,7 +57,7 @@ document.querySelector('#add-movie-form').addEventListener('submit', async event
         const result = await response.json();
         console.log('Movie added:', result);
 
-        alert('Movie added successfully!');
+        //alert('Movie added successfully!');
         fetchMovies(); // Refresh the movie list
     } catch (error) {
         console.error('Error adding movie:', error);

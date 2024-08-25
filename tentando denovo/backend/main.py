@@ -2,8 +2,11 @@
 import os
 import mysql.connector
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
+
+CORS(app)
 
 db_config = {
     'user': os.getenv('DB_USER', 'root'),
