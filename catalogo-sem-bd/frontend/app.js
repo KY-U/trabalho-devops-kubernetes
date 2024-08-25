@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('movie-form');
     const movieList = document.getElementById('movie-list');
     
-    // Fetch movies on page load
+    //Busca Filmes
     function fetchMovies() {
         fetch('/api/movies')
             .then(response => response.json())
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     const li = document.createElement('li');
                     li.textContent = `${movie.title} (${movie.year})`;
                     
-                    // Add a remove button for each movie
+                    //Adiciona botão para cada filme
                     const removeButton = document.createElement('button');
                     removeButton.textContent = 'Remove';
                     removeButton.addEventListener('click', () => {
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => response.json())
         .then(() => {
-            fetchMovies(); // Refresh the movie list
+            fetchMovies(); //Atualiza a lista de Filmes
         })
         .catch(error => {
             console.error('Error removing movie:', error);
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => response.json())
         .then(() => {
-            // Clear form and fetch movies again
+            //Limpa a tabela e busca filmes
             form.reset();
             fetchMovies();
         })
@@ -66,5 +66,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    fetchMovies(); // Initial fetch on page load
+    fetchMovies(); //Ao carregar a página, busca os filmes já existentes
 });

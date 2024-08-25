@@ -1,10 +1,13 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
+#Códigos de status HTTP:
+#400 (Bad Request)
+#200 (OK)
 app = Flask(__name__)
 CORS(app)
 
-# In-memory database for simplicity
+#BD na memória para simplicidade
 movies = []
 
 @app.route('/api/movies', methods=['GET'])

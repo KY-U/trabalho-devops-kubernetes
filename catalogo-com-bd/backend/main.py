@@ -30,9 +30,11 @@ def handle_db_error(error):
 
 @app.route('/movies', methods=['GET'])
 def get_movies():
+    #Conecta no bd
     conn = get_db_connection()
     if conn is None:
         return jsonify({"error": "Failed to connect to database"}), 500
+    #Cursor com Contex Manager
     try:
         with conn.cursor(dictionary=True) as cursor:
             cursor.execute("SELECT id, title, release_year, description FROM movies")
