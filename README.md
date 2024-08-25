@@ -23,11 +23,15 @@ A aplicação se trata de um sistema simples de gerenciamento de filmes, contend
 ### Containers:
 - Docker
 
-## Como Rodar o Projeto:
+## Requisitos:
 
-Existem duas versões do trabalho, uma que não utiliza MySQL como bd, guardando os filmes em memória para facilidade. Já a outra, a aplicação completa utilizando MySQL.
+Apenas é necessário possuir a aplicaçao docker instalada: https://www.docker.com/products/docker-desktop/
 
-Para realizar o deploy de ambas as aplicações, basta rodar o seguinte comando a partir da raíz do projeto:
+## Rodando o Projeto:
+
+Existem duas versões do trabalho, uma que não utiliza MySQL como bd, guardando os filmes em memória para facilidade. Já a outra, se trata da aplicação completa utilizando MySQL.
+
+Para realizar o deploy de ambas as aplicações, basta rodar o seguinte comando a partir da raíz do projeto "catalogo-com-bd" ou "catalogo-sem-bd":
 
 ```
 docker compose up --build
