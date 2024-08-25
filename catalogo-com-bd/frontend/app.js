@@ -1,5 +1,7 @@
-const apiUrl = 'http://python_backend:5000'; // URL do backend
+//const apiUrl = 'http://python_backend:5000'; // URL do backend
 
+//Com o proxy reverso:
+const apiUrl = '/api';
 // Function to fetch and display movies
 async function fetchMovies() {
     try {
