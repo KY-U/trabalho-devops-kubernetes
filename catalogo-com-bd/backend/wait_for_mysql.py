@@ -2,7 +2,7 @@ import time
 import mysql.connector
 from mysql.connector import Error
 
-# Configurações do banco de dados
+#Configurações do banco de dados
 db_config = {
     'host': 'mysql_database',
     'user': 'root',
