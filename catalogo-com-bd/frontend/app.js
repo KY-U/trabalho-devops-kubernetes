@@ -1,7 +1,7 @@
 //const apiUrl = 'http://python_backend:5000'; // URL do backend
 
 //Com o proxy reverso:
-const apiUrl = '/api';
+const apiUrl = 'http://k8s.local/api';
 //Busca os filmes
 async function fetchMovies() {
     try {

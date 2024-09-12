@@ -1,9 +1,10 @@
 #!/bin/bash
 
 #habilita o docker dentro do minikube
-#linux
 #& minikube -p minikube docker-env --shell powershell | Invoke-Expression
-#eval $(minikube docker-env)
+
+#minikube -p minikube docker-env | source
+eval $(minikube docker-env)
 
 #diretórios de cada serviço
 services=("database" "backend" "frontend")
@@ -19,7 +20,7 @@ echo "Docker images built:"
 docker images | grep -E "database|backend|frontend"
 
 #ao executar o script no windows, ele abre uma janela gitbash e a fecha rapidamente
-read -p $'\nNao some, Jesus te ama! Pressione enter para continuar...'
+#read -p $'\nNao some, Jesus te ama! Pressione enter para continuar...'
 
 
 

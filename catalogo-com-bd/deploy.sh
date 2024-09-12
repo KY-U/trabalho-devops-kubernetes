@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #caso não esteja rodando, iniciar minikube
-minikube start
+#minikube start
 
 minikube addons enable ingress
 
@@ -29,7 +29,7 @@ kubectl get pods
 kubectl get ingress
 
 #abre o serviço ingress
-minikube tunnel
+#minikube tunnel
 
 #ao executar o script no windows, ele abre uma janela gitbash e a fecha rapidamente
-read -p $'\nNao some, Jesus te ama! Pressione enter para continuar...'
+#read -p $'\nNao some, Jesus te ama! Pressione enter para continuar...'
