@@ -1,4 +1,4 @@
-# Trabalho 1 de DevOps:
+# Trabalho 2 de DevOps:
 
 *Caio Ueda Sampaio: 802215*
 
@@ -22,6 +22,7 @@ A aplicação se trata de um sistema simples de gerenciamento de filmes, contend
 
 ### Containers:
 - Docker
+- Kubernetes
 
 ## Requisitos:
 

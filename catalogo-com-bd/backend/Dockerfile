@@ -16,6 +16,12 @@ COPY . .
 #Expõe a porta que o Flask utilizará
 EXPOSE 5000
 
+#Variáveis de ambiente
+ENV DB_HOST=mysql_database
+ENV DB_USER=root
+ENV DB_PASSWORD=root
+ENV DB_NAME=catalogo
+
 #Copie o script de espera
 COPY wait_for_mysql.py /app/wait_for_mysql.py
 
