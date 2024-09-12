@@ -16,7 +16,7 @@ CORS(app)
 db_config = {
     'user': os.getenv('DB_USER', 'root'),
     'password': os.getenv('DB_PASSWORD', 'root'),
-    'host': os.getenv('DB_HOST', 'mysql_database'),
+    'host': os.getenv('DB_HOST', 'mysql-service'),
     'database': os.getenv('DB_NAME', 'catalogo')
 }
 

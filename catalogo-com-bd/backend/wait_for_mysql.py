@@ -4,7 +4,7 @@ from mysql.connector import Error
 
 #Configurações do banco de dados
 db_config = {
-    'host': 'mysql_database',
+    'host': 'mysql-service',
     'user': 'root',
     'password': 'root',
     'database': 'catalogo'

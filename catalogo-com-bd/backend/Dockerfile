@@ -17,7 +17,7 @@ COPY . .
 EXPOSE 5000
 
 #Variáveis de ambiente
-ENV DB_HOST=mysql_database
+ENV DB_HOST=mysql-service
 ENV DB_USER=root
 ENV DB_PASSWORD=root
 ENV DB_NAME=catalogo
