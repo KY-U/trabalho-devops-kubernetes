@@ -4,7 +4,7 @@
 
 ## Aplicação Escolhida:
 
-A aplicação se trata de um sistema simples de gerenciamento de filmes, contendo implementação de CRUD para manipulação dos filmes. O Front, Back e BD possuem seus próprios containers. Os containers são referenciados por seus nomes, e suas portas não extão expostas para o usuário. Isso é realizado com proxy reverso do ngix que realiza o redirecionamento de portas.
+A aplicação se trata de um sistema simples de gerenciamento de filmes, contendo implementação para manipulação dos filmes. O Front, Back e BD possuem seus próprios containers. Os containers são referenciados por seus nomes, e suas portas não extão expostas para o usuário. Isso é realizado com proxy reverso do ngix que realiza o redirecionamento de portas.
 
 ## Tecnologias Utilizadas:
 
@@ -18,7 +18,7 @@ A aplicação se trata de um sistema simples de gerenciamento de filmes, contend
 - MySQL
 
 ### Proxy Reverso:
-- Ngix
+- Ingress Nginx
 
 ### Containers:
 - Docker
@@ -26,16 +26,25 @@ A aplicação se trata de um sistema simples de gerenciamento de filmes, contend
 
 ## Requisitos:
 
-Apenas é necessário possuir a aplicaçao docker instalada: https://www.docker.com/products/docker-desktop/
+É necessário possuir a aplicaçao docker instalada: https://www.docker.com/products/docker-desktop/
+E minikube: https://minikube.sigs.k8s.io/docs/
 
 ## Rodando o Projeto:
-
-Existem duas versões do trabalho, uma que não utiliza MySQL como bd, guardando os filmes em memória para facilidade. Já a outra, se trata da aplicação completa utilizando MySQL.
-
-Para realizar o deploy de ambas as aplicações, basta rodar o seguinte comando a partir da raíz do projeto "catalogo-com-bd" ou "catalogo-sem-bd":
-
+O sistema está puxando imagens de meus repositórios do docker hub, por isso, com o docker e minikube rodando, basta realizar o seguinte comando:
 ```
-docker compose up --build
+./minikube-up.sh
 ```
 
-A aplicação estará disponível em *http://localhost* ou *http://localhost:80*
+Caso queira utilizar imagens locais, é necessário rodar o seguinte script:
+```
+./build.sh
+```
+Em seguida, basta mudar os arquivos .yaml de deploy alterando as imagens do formato:
+```
+image: caiou/<serviço>:latest
+```
+para
+```
+image: <serviço>:latest
+```
+Como o ip do minikube foi mapeado para "k8s.local" o serviço estará disponível em *http://k8s.local*
