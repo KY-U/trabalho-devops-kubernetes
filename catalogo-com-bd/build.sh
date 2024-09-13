@@ -1,10 +1,11 @@
 #!/bin/bash
 
-#habilita o docker dentro do minikube
-#& minikube -p minikube docker-env --shell powershell | Invoke-Expression
+#habilita o docker dentro do minikube:
+#dessa forma, não é necessário realizar 
+#minikube image load <imagem>
 
-#minikube -p minikube docker-env | source
-eval $(minikube docker-env)
+#eval $(minikube docker-env)
+minikube -p minikube docker-env | source
 
 #diretórios de cada serviço
 services=("database" "backend" "frontend")
