@@ -8,7 +8,9 @@
 minikube -p minikube docker-env | source
 
 #diretórios de cada serviço
-services=("database" "backend" "frontend")
+#como a imagem que o banco de dados utiliza é
+#a imagem mysql oficial, não é necessário buildar
+services=("backend" "frontend")
 
 #build de cada serviço
 for service in "${services[@]}"; do

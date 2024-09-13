@@ -1,5 +1,5 @@
-#deletando todos os pods e serviços na ordem
-#inversa à que foram criados
+#deletando todos os pods e serviços na 
+#ordem inversa à que foram criados
 
 kubectl delete -f k8s/ingress.yaml
 kubectl delete -f k8s/frontend-service.yaml
