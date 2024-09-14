@@ -16,6 +16,9 @@ services=("backend" "frontend")
 for service in "${services[@]}"; do
     echo "Building $service"
     docker build -t $service ./$service
+    #caso as imagens fossem buildadas localmente
+    #seria necessário realizar a exportação manualmente
+    #minikube image load $service
 done
 
 #verifica se o build foi bem sucedido
